@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="resources/style.css">
+
+</head>
+<body>
+
+<div  id="uploader">
+    <img src="assets/image/upload.png" alt="">
+</div>
+
+<input type="file" id="upload" accept="image/jpeg,image/png">
+<img src="" id="preview" alt="">
+<div class="gallery"></div>
+
+<script>
+        let defaultUploaderPhoto = "assets/image/upload.png";
+        let upload = document.getElementById("upload");
+        let gallery = document.getElementById("gallery");
+        let preview = document.getElementById("preview");
+        let uploader = document.getElementById("uploader");
+
+        function createNewImg(){
+
+        }
+
+        uploader.addEventListener("click",function (){
+             console.log("U click uploader");
+             upload.click();
+        });
+
+        upload.addEventListener("change",function (){
+            let photo = this.files[0];
+            const reader = new FileReader();
+
+            reader.addEventListener("load",function (){
+                console.log(reader.result);
+                preview.src = reader.result;
+            });
+            reader.readAsDataURL(photo);
+            console.log(photo);
+        })
+</script>
+
+</body>
+</html>
